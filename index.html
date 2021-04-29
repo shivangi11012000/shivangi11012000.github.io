@@ -1,1 +1,138 @@
-Hello
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>User Details</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<style>
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333;
+		}
+		
+		li {
+		  float: left;
+		}
+		
+		li a {
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		
+		li a:hover:not(.active) {
+		  background-color: #111;
+		}
+		
+		.active {
+		  background-color: #4CAF50;
+		}
+	</style>
+</head>
+
+<body>
+	<ul>
+		<li><a class="active" href="#home">Home</a></li>
+		<li><a href="userDetail3.html">List Of Users</a></li>
+	</ul>
+	<div class="page-content">
+		<div class="form-v2-content">
+			<div class="form-left">
+				<img src="images/pexels-pixabay-433452.jpg" style="object-fit: cover;"  alt="form" width="400" height="750">
+			</div>
+			<!-- <div>
+				Name : <input type="text" name="full_name" id="full_name" class="input-text" placeholder="ex: Shivangi"
+					required><br>
+				Age : <input type="number" name="age" id="age" class="input-text" min="1" max="100" placeholder="ex: 21"
+					required><br>
+				Email : <input type="text" name="your_email" id="your_email" class="input-text" required
+					pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="ex: shivangi123@gmail.com"><br>
+				Address : <input type="text" name="address" id="address" class="input-text"
+					placeholder="ex: #12 B1 anand bagh shimla" required><br>
+				Phone : <input type="number" name="phone_number" id="phone_number" class="input-text"
+					placeholder="ex: 9988776635" required><br>
+				<button onclick="addUser()">Click me</button>
+			</div> -->
+
+			<table>
+				<tr>
+					<td colspan="2" style="text-align: center;"><h1>Let's Get To Know You</h1></td>
+				</tr>
+				<tr>
+					<td>Name :</td>
+					<td><input type="text" name="full_name" id="full_name" class="input-text" placeholder="ex: Shivangi"
+						required style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td>Age :</td>
+					<td><input type="number" name="age" id="age" class="input-text" min="1" max="100" placeholder="ex: 21"
+						required style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td>Email :</td>
+					<td><input type="text" name="your_email" id="your_email" class="input-text" required
+						pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="ex: shivangi123@gmail.com" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td>Address :</td>
+					<td> <input type="text" name="address" id="address" class="input-text"
+						placeholder="ex: #12 B1 anand bagh shimla" required style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td>Phone :</td>
+					<td><input type="number" name="phone_number" id="phone_number" class="input-text"
+						placeholder="ex: 9988776635" required style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;"><button onclick="addUser()">Click me</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script>
+
+		function addUser() {
+			addUserToDb();
+			document.getElementById('your_email').value = "";
+			document.getElementById('full_name').value = "";
+			document.getElementById('phone_number').value = "";
+			document.getElementById('age').value = "";
+			document.getElementById('address').value = "";
+		}
+
+		function addUserToDb() {
+			console.log("add user method ac")
+			const headers = { "Content-Type": "application/json" };
+			const params = {
+				"email": document.getElementById('your_email').value,
+				"name": document.getElementById('full_name').value,
+				"phonenumber": document.getElementById('phone_number').value,
+				"gender": "female",
+				"age": document.getElementById('age').value,
+				"address": document.getElementById('address').value
+			};
+			var URL = "https://guarded-lake-73479.herokuapp.com/api/users/createusers";
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var resBody = JSON.parse(xmlhttp.responseText)
+					window.alert(resBody.message.message)
+					if (resBody.message.code == 200)
+					{
+					location.href = './userDetail3.html'
+					}
+				}
+			};
+			xmlhttp.open("POST", URL, true);
+			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xmlhttp.send(JSON.stringify(params))
+		}
+	</script>
+</body>
+
+</html>
