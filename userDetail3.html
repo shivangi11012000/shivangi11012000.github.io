@@ -8,13 +8,46 @@
       <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
       <script src="bootstable.min.js"></script>
       <link rel="stylesheet" href = "css/userDetails3.css" type="css/text">
+      <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+      </style>
   </head>
 
-<body>
+<body onload="getAllUsers()">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="#">List Of Users</a></li>
+  </ul>
   <div style="width:70%; margin: auto;">
     <h1>User Details</h1>
     <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
-    <button>Search</button>
+    <button id="searchbutton" onclick="searchaction()">Search</button>
     <table class="table" id="makeEditable">
         <thead>
           <tr>
@@ -25,57 +58,82 @@
             <th>Phone</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Default</td>
-            <td>Defaultson</td>
-            <td>def@somemail.com</td>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>      
-          <tr class="success">
-            <td>Success</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>
-          <tr class="danger">
-            <td>Danger</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>
-          <tr class="info">
-            <td>Info</td>
-            <td>Dooley</td>
-            <td>july@example.com</td><h4>HTML</h4>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>
-          <tr class="warning">
-            <td>Warning</td>
-            <td>Refs</td>
-            <td>bo@example.com</td>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>
-          <tr class="active">
-            <td>Active</td>
-            <td>Activeson</td>
-            <td>act@example.com</td>
-            <td>Default</td>
-            <td>Defaultson</td>
-          </tr>
+        <tbody id="userslist">
         </tbody>
       </table>
     </div>
+ <script>
+           function getAllUsers()
+           {
+            var URL = "https://guarded-lake-73479.herokuapp.com/api/users/getusers"; //Your URL
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(xhttp.responseText);
+            myFunction(myArr.users);
+             }
+            };
+            xhttp.open("GET", URL, true);
+            xhttp.send();
+           }
+
+      function myFunction(arr) {
+        var out = "";
+        var i;
+        for(i = 0; i < arr.length; i++) {
+            var codeBlock = '<tr class="active"> <td>' + arr[i].name + '</td> <td>'  + arr[i].age +  '</td> <td>' + arr[i].email +  '</td> <td>'  + arr[i].address +  '</td> <td>' + arr[i].phonenumber +  '</td> <td> <button id =' + arr[i].id + ' onclick="deleteuser(' + arr[i].id + ')">delete</button> </td> </tr>'  ;
+            out += codeBlock;
+        }
+        document.getElementById("userslist").innerHTML = out;
+      }
+     
+    function deleteuser(id)
+    {
+            var URL = "https://guarded-lake-73479.herokuapp.com/api/users/deleteuser/" + id; //Your URL
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(xhttp.responseText);
+            myFunction(myArr.users);
+             }
+            };
+            xhttp.open("GET", URL, true);
+            xhttp.send();
+    }
+    function searchaction()
+    {
+         var name = document.getElementById("myInput").value
+        if (document.getElementById("searchbutton").textContent == "Search")
+        {
+         if (name.length > 0)
+         {
+         document.getElementById("searchbutton").innerHTML = "Cancel";
+         var URL = "https://guarded-lake-73479.herokuapp.com/api/users/getusers/" + name; //Your URL
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(xhttp.responseText);
+            if (myArr.users.length == 0)
+            {
+                alert(myArr.message);
+            }
+            else
+            {
+                myFunction(myArr.users);
+            }
+             }
+            };
+          xhttp.open("GET", URL, true);
+          xhttp.send();
+         }
+        }
+        else{
+          document.getElementById('myInput').value = '';
+          getAllUsers();
+          document.getElementById("searchbutton").innerHTML = 'Search';
+        }
+    }
+</script>
     
 </body>
-<script>
- $('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-</script>
-
-
 </html>
