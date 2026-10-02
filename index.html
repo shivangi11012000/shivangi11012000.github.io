@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shivangi, Mobile Engineer</title>
+  <meta name="description" content="Shivangi builds React Native and iOS apps where timing matters: live calls, chat and device data. Author of the open-source React Native debugger BugBubble.">
+  <meta name="theme-color" content="#0D0C1D">
+  <link rel="preload" href="assets/fonts/inter-display-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <noscript><p style="padding:96px 24px 24px;max-width:40rem;margin:auto">This portfolio needs JavaScript to show the apps. Shivangi is a mobile engineer (React Native, iOS). Email: shivangi11012000@gmail.com</p></noscript>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="spot" aria-hidden="true"></div>
+  <a class="skip" href="#apps">Skip to apps</a>
+
+  <header class="nav">
+    <a href="#top" class="logo" aria-label="Shivangi, back to top">Shivangi</a>
+    <nav aria-label="Sections">
+      <a class="hot" href="#oss">Open source</a>
+      <a href="#apps">Apps</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="name" id="name" aria-label="Shivangi"></h1>
+        <div class="hero-copy">
+          <p class="role">SDE II, mobile engineer</p>
+          <p class="pitch">I build React Native and iOS apps where timing matters: live calls, chat and device data that has to arrive now.</p>
+          <a class="oss-pill" href="#oss">
+            <span class="badge">Open source</span>
+            <span>I built BugBubble, a debugger that lives inside your React Native app</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="cta">
+            <a class="btn solid" href="#apps">See the apps</a>
+            <a class="btn" id="cv-link" href="assets/Shivangi_Resume2026.pdf" download>Download CV</a>
+          </div>
+          <dl class="mini-stats">
+            <div><dt>downloads</dt><dd>50L+</dd></div>
+            <div><dt>crash-free</dt><dd>&gt;99.2%</dd></div>
+            <div><dt>ARPU</dt><dd>+11%</dd></div>
+            <div><dt>years</dt><dd>5+</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="hero-stage" id="hero-stage" aria-hidden="true"></div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
+    <!-- OPEN SOURCE -->
+    <section class="oss" id="oss" aria-labelledby="oss-h">
+      <div class="oss-copy">
+        <p class="kicker">Open source, MIT licensed</p>
+        <h2 id="oss-h">BugBubble</h2>
+        <p class="lead">A floating debugger inside your React Native app. It captures network calls, WebSocket events, console logs and analytics as they happen, so you can inspect a build on a real device with no cable and no laptop.</p>
+        <ul class="feat">
+          <li>One component, zero configuration</li>
+          <li>Search and filter every log type</li>
+          <li>Draggable bubble, TypeScript types included</li>
+          <li>Choose what to track: network, WebSocket, console, analytics</li>
+        </ul>
+        <div class="install">
+          <code id="install-cmd">npm install @lokal-dev/react-native-bugbubble</code>
+          <button type="button" class="btn small" id="copy-install">Copy</button>
+        </div>
+        <pre class="snippet" aria-label="Usage example"><span class="k">import</span> { BugBubble } <span class="k">from</span> <span class="s">'@lokal-dev/react-native-bugbubble'</span>;
+
+<span class="k">export default function</span> <span class="f">App</span>() {
+  <span class="k">return</span> (
+    &lt;&gt;
+      &lt;<span class="f">YourAppContent</span> /&gt;
+      &lt;<span class="f">BugBubble</span> /&gt;
+    &lt;/&gt;
+  );
+}</pre>
+        <div class="links" id="oss-links"></div>
+      </div>
+      <div class="oss-demos" id="oss-demos"></div>
+    </section>
+
+    <!-- APPS (rendered by script.js) -->
+    <div class="section-head" id="apps" tabindex="-1">
+      <h2>Apps I've shipped</h2>
+      <p>Open each one on the store. Drag or use the arrows to browse screenshots.</p>
+    </div>
+    <div id="apps-list"></div>
+
+    <!-- EARLIER WORK -->
+    <section class="earlier">
+      <h2>Earlier work</h2>
+      <div class="earlier-grid" id="earlier-grid"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="experience" id="experience">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">Mar 2025 to now</p>
+          <div>
+            <h3>React Native Developer, SDE II</h3>
+            <p class="where">Behtar Technologies (Lokal), Bengaluru</p>
+            <p>Frontend Pod Lead on AstroLokal. I own frontend delivery with product, design and backend, mentor junior engineers and set the code quality bar. Also extending the app with outbound dialing and interactive voice response.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Nov 2022 to Mar 2025</p>
+          <div>
+            <h3>Software Engineer, React Native and React.js</h3>
+            <p class="where">VT Netzwelt, Mohali</p>
+            <p>Simpliscada: React Native 0.68 to 0.72 migration, navigation rebuild, RTK Query adoption, WebView event bridge for IoT diagrams, and the React.js companion web app.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">Jan 2021 to Jun 2022</p>
+          <div>
+            <h3>iOS and React Native Developer</h3>
+            <p class="where">NovoInvent Software, Noida</p>
+            <p>Vocabimate with native AVPlayer bridges, and a custom CRM.</p>
+          </div>
+        </li>
+        <li>
+          <p class="when">2018 to 2022</p>
+          <div>
+            <h3>B.Tech, Chitkara University</h3>
+            <p class="where">9.76 CGPA</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+      <h2>What I work with</h2>
+      <dl class="rows">
+        <div><dt>Frameworks</dt><dd>React Native (Expo and CLI), React.js, Swift, SwiftUI, TypeScript, JavaScript</dd></div>
+        <div><dt>State and data</dt><dd>Redux Toolkit, RTK Query, Zustand, React Query, Axios, Redux Saga</dd></div>
+        <div><dt>Native and cloud</dt><dd>CallKit, VoIP, APNs, FCM, Native and Turbo Modules, UPI intents, deep linking</dd></div>
+        <div><dt>Real-time and media</dt><dd>WebSockets, Stream audio/video calling, AVPlayer</dd></div>
+        <div><dt>Quality</dt><dd>Firebase Crashlytics and Analytics, Jest, React Native Testing Library, BugBubble</dd></div>
+        <div><dt>Tooling</dt><dd>Git, Firebase App Distribution, Xcode, Android Studio, Jira, Confluence design docs</dd></div>
+      </dl>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <h2>Let's build something</h2>
+      <p class="mail-row">
+        <a class="mail" id="mail" href="#"></a>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </p>
+      <div class="links" id="contact-links"></div>
+    </section>
+  </main>
+
+  <footer><span id="year"></span> Shivangi</footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer" aria-hidden="true">
+    <button class="lb-x" type="button" aria-label="Close">×</button>
+    <button class="lb-nav prev" type="button" aria-label="Previous screenshot">‹</button>
+    <img alt="">
+    <button class="lb-nav next" type="button" aria-label="Next screenshot">›</button>
+  </div>
+
+  <script src="apps.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
